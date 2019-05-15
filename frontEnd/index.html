@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教育证书存证平台</title>
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js"></script>
+    <script src="index.js"></script>
+
+
+
+</head>
+
+<body>
+
+<!--弹出登录窗口-->
+<div id="LoginWindow" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">教育证书平台登录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="userAcc"></label>
+                    <input type="email" class="form-control" id="userAcc" placeholder="账户名">
+                    <label for="PrivateKey"></label>
+                    <input type="email" class="form-control" id="PrivateKey" placeholder="账户私钥">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="close_win btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="Login btn btn-primary">登录</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--弹出新建证书窗口-->
+<div id="ReleaseCard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">新建证书</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+
+
+                    <label for="GetToken"></label>
+                    <input type="email" class="form-control" id="GetStudent" placeholder="学生姓名">
+                    <label for="GetToken"></label>
+                    <input type="email" class="form-control" id="GetSubject" placeholder="学习科目">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetScore" placeholder="分数">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetSex" placeholder="性别">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetComment" placeholder="评价和建议">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="close_win btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="ConfirmRelease btn btn-primary">确认新建</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--修改窗口-->
+<div id="Modifycard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改证书</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="GetWorker"></label>
+                    <input type="email" class="form-control" id="GetId" placeholder="证书Id">
+                    <label for="GetToken"></label>
+                    <input type="email" class="form-control" id="GetStudent" placeholder="学生姓名">
+                    <label for="GetToken"></label>
+                    <input type="email" class="form-control" id="GetSubject" placeholder="学习科目">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetScore" placeholder="分数">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetSex" placeholder="性别">
+                    <label for="GetTaskInfo"></label>
+                    <input type="email" class="form-control" id="GetComment" placeholder="评价和建议">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="close_win btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="ConfirmChange btn btn-primary">确认修改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--查询的子窗口-->
+<div id="FindIdcard" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">查询证书</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="GetWorker"></label>
+                    <input type="email" class="form-control" id="GetId" placeholder="证书Id">
+
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="close_win btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="ConfirmFind btn btn-primary">查询</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="container-msg">
+    <div class="pdjeducard">
+        <div>
+            <div class='btn-margin'>
+                <button type="button" class="Createcard btn btn-danger">颁发证书</button>
+                <button type="button" class="Changecard btn btn-danger">修改证书</button>
+                <button type="button" class="Findcard btn btn-primary">查询证书</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="cardtable">
+    <table class="table table-condensed">
+        <!-- On rows -->
+
+
+        <!-- On cells (`td` or `th`) -->
+        <tr>
+            <td class="active">学生姓名</td>
+            <td class="info">性别</td>
+            <td class="success">证书创建者</td>
+            <td class="warning">证书Id</td>
+            <td class="danger">所学科目</td>
+            <td class="success">评价和建议</td>
+        </tr>
+        <tbody id="list"></tbody>
+
+    </table>
+</div>
+
+</body>
+</html>
